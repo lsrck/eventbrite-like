@@ -1,21 +1,31 @@
 class EventsController < ApplicationController
   def index
+    @events = Event.all
   end
 
   def new
-  	@event = Events.new
+  	@event = Event.new
   end
 
   def create
-  	@event = Events.new(params[:event])
+  	@event = Event.new(params_event)
+    @event.creator = current_user
+
   	if
   		@event.save
-  		redirect_to events_path
+      flash[:success] = "Votre événement a bien été créé !"
+  		redirect_to @event
   	else
-  		render "new"
+  		redirect_to events_path
   	end
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 end
+
+private
+  def params_event
+   params.permit(:name, :description, :date, :place)
+  end

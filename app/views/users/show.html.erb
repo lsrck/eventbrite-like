@@ -9,3 +9,12 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+
+<p>
+<strong>Liste des événements de l'utilisateur:</strong>
+	<% @user.created_events.each do |event| %>
+  <%= link_to event.name, event_path(event) %>
+	<% end %>
+</p>
+
+<p><%= link_to "Clickez ici pour ajouter une activité", new_event_path %> </p>

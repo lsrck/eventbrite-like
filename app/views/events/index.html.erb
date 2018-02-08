@@ -1,2 +1,14 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1>Evenements futurs</h1>
+
+<p>Bienvenu sur la page d'accueil qui rassemble l'ensemble des événements à venir</p>
+
+<% @events.each do |event| %>
+
+<%= event.name %>
+<%= event.date.strftime("%d-%m-%Y") %>
+<%= event.place %>
+<%= event.description %>
+<%= event.creator.name %>
+<%= link_to "Voir l'événement", event_path(event) %> </br>
+<% end %>
+

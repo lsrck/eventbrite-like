@@ -1,15 +1,39 @@
-<h1>Créer un nouvel événement</h1>
+<% if logged_in? %>
 
-<%= form_tag (users_path) do %>   
-  	<%= label_tag 'name', "Nom de l'évenement" %> 
-	<%= text_field_tag 'name' %> 
+	<h1>Créer un nouvel événement</h1>
 
-	<%= label_tag 'date', "Date de l'événement" %> 
-	<%#si marche aps mettre date_field %>
-	<%= datetime_local_field'date' %>
+	<%= form_tag (events_path) do %>  
+	<% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@event.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h2>
+        <% @event.errors.full_messages.each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+    </div>
+  <% end %> 
+	  	<%= label_tag 'name', "Nom de l'évenement" %> 
+		<%= text_field_tag 'name' %> 
 
-	<%= label_tag 'description', "Description de l'événement" %> 
-	<%= text_field_tag 'description' %>
+		<%= label_tag 'date', "Date de l'événement" %> 
+		<%#si marche aps mettre date_field %>
+		<%= date_field_tag(:date) %>
 
-	<%= submit_tag "Créer un nouvel événement"%> 
+		<%= label_tag 'place', "Lieu de l'évenement" %> 
+		<%= text_field_tag 'place' %> 
+
+		<%= label_tag 'description', "Description de l'événement" %> 
+		<%= text_field_tag 'description' %>
+
+		<%= submit_tag "Créer un nouvel événement"%> 
+	<% end %>
+
+<% else %>
+
+	<p> Vous n'êtes pas connecté! </br>
+	Connectez-vous afin de pouvoir créer un événement </br>
+	<%= link_to "Connectez-vous maintenant", login_path %></p>
 <% end %>
+
