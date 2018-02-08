@@ -11,5 +11,12 @@ class User < ApplicationRecord
   #permet de changer le password and password_digest. Il faut ajouter password_digest dans la table
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+    def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
   
 end

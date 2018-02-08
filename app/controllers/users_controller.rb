@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(params_user)
   	if @user.save
+      log_in @user
+      flash[:success] = "Bienvenu sur eventbritelike!"
   		redirect_to users_path
   	else
   		render "new"

@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'events/index'
+	root "events#index"
+	
 
-  get 'events/new'
+	get '/login', to: 'sessions#new'
+	post '/login', to: 'sessions#create'
+	delete '/logout', to: 'sessions#destroy'
 
-  get 'events/create'
-
-  get 'events/show'
-
-	root "users#index"
 	resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	resources :events
+
 end

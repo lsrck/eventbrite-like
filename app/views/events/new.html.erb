@@ -1,2 +1,15 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<h1>Créer un nouvel événement</h1>
+
+<%= form_tag (users_path) do %>   
+  	<%= label_tag 'name', "Nom de l'évenement" %> 
+	<%= text_field_tag 'name' %> 
+
+	<%= label_tag 'date', "Date de l'événement" %> 
+	<%#si marche aps mettre date_field %>
+	<%= datetime_local_field'date' %>
+
+	<%= label_tag 'description', "Description de l'événement" %> 
+	<%= text_field_tag 'description' %>
+
+	<%= submit_tag "Créer un nouvel événement"%> 
+<% end %>
