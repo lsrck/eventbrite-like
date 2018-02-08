@@ -1,4 +1,4 @@
-<h1>Bienvenu sur ton événement</h1>
+<h1>Bienvenu sur l'événement</h1>
 
 <p>
   <strong>Evenement:</strong>
@@ -18,6 +18,19 @@
 <p>
   <strong>Description:</strong>
   <%= @event.description %>
+</p>
+
+<p>
+  <strong>Créateur de l'événement:</strong>
+  <%= @event.creator.name %>
+</p>
+
+<p>
+  <strong>Liste des invités</strong>
+  <% @event.attendees.each do |attendee| %>
+  <%= attendee.name %>
+  <%= link_to('Voir le profil du participant', user_path(attendee)) %>
+  <% end %>
 </p>
 
 <%= link_to "Tous les événements", events_path %>
