@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   	if @user.save
       log_in @user
       flash[:success] = "Bienvenu sur eventbritelike!"
-  		redirect_to users_path
+  		redirect_to @user
   	else
   		render "new"
   	end
