@@ -1,2 +1,14 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Créer un nouvel utilisateur</h1>
+
+<%= form_tag (users_path) do %>   
+  	<%= label_tag 'name', "Nom de l'utilsateur" %> 
+	<%= text_field_tag 'name' %> 
+
+	<%= label_tag 'email', 'Email' %> 
+	<%= text_field_tag 'email' %>
+
+	<%= label_tag 'password', 'Mot de passe' %> 
+	<%= password_field_tag 'password' %>
+	
+	<%= submit_tag "Créer nouvel utilisateur"%> 
+<% end %>
