@@ -1,1 +1,14 @@
-<h1>Bienvenu sur l'index</h1>
+<h1>Bienvenu sur la page d'accueil</h1>
+
+<% @users.each do |user| %>
+<p><%= user.name %></p>
+<p><%= user.email %></p>
+<%= link_to "Lien vers le user", user_path(user) %>
+<%= link_to "Editer le user", user_path(user) %>
+<%= link_to "Supprimer le user", user_path(user),
+               	method: :delete,
+                data: { confirm: 'Are you sure?' }
+ %>
+<% end %>
+
+<p><%= link_to "Créer un nouvel utilisateur" %><p>
